@@ -22,7 +22,7 @@ function Nav() {
             <ul className="nav navbar-nav d-xl-none">
               <li className="nav-item">
                 <a className="nav-link menu-toggle" href="index.html">
-                  <i className="ficon" data-feather="menu"></i>
+                  <FeatherIcon icon='menu' className="ficon" />
                 </a>
               </li>
             </ul>

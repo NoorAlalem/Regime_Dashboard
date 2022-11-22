@@ -149,13 +149,13 @@ function Users_Table() {
                   <tbody>
                     <tr>
                       <td>
-                        <img
+                        {/* <img
                           src="../../../app-assets/images/icons/user1.png"
                           className="me-75"
                           height={20}
                           width={20}
                           alt="Angular"
-                        />
+                        /> */}
                         <span className="fw-bold">نور العالم </span>
                       </td>
                       <td>0929207542</td>
@@ -187,13 +187,7 @@ function Users_Table() {
 
                     <tr>
                       <td>
-                        <img
-                          src="../../../app-assets/images/icons/user1.png"
-                          className="me-75"
-                          height={20}
-                          width={20}
-                          alt="Angular"
-                        />
+                      
                         <span className="fw-bold">نور العالم </span>
                       </td>
                       <td>0929207542</td>
@@ -224,13 +218,7 @@ function Users_Table() {
                     </tr>
                     <tr>
                       <td>
-                        <img
-                          src="../../../app-assets/images/icons/user1.png"
-                          className="me-75"
-                          height={20}
-                          width={20}
-                          alt="Angular"
-                        />
+                      
                         <span className="fw-bold">نور العالم </span>
                       </td>
                       <td>0929207542</td>
@@ -261,13 +249,7 @@ function Users_Table() {
                     </tr>
                     <tr>
                       <td>
-                        <img
-                          src="../../../app-assets/images/icons/user1.png"
-                          className="me-75"
-                          height={20}
-                          width={20}
-                          alt="Angular"
-                        />
+                       
                         <span className="fw-bold">نور العالم </span>
                       </td>
                       <td>0929207542</td>
@@ -298,13 +280,7 @@ function Users_Table() {
                     </tr>
                     <tr className="">
                       <td>
-                        <img
-                          src="../../../app-assets/images/icons/user1.png"
-                          className="me-75"
-                          height={20}
-                          width={20}
-                          alt="Angular"
-                        />
+                      
                         <span className="fw-bold">نور العالم </span>
                       </td>
                       <td>0929207542</td>

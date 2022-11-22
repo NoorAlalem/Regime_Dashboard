@@ -12,7 +12,7 @@ function Complaints_Table() {
           <div className="content-header-left col-md-9 col-12 mb-2">
             <div className="row breadcrumbs-top">
               <div className="col-12">
-                <h1 className="float-start mb-0 text-primary">الشكاوى:</h1>
+                <h1 className="float-start mb-0 text-primary">الشكاوى</h1>
               </div>
             </div>
           </div>

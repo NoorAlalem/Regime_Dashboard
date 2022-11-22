@@ -11,6 +11,13 @@ import Sidebar from "./Sidebar";
 
 function App() {
   return (
+    
+       <body
+    className='vertical-layout vertical-menu-modern  navbar-floating footer-static'
+    data-open="click"
+    data-menu="vertical-menu-modern"
+    data-col=""
+  >
     <div className="App">
       <Router>
         <Routes>
@@ -28,7 +35,9 @@ function App() {
       </Router>
       <div class="sidenav-overlay"></div>
       <div class="drag-target"></div>
+      
     </div>
+    </body>
   );
 }
 
