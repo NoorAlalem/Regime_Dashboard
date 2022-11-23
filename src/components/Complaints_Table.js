@@ -107,13 +107,13 @@ function Complaints_Table() {
                   <tbody>
                     <tr>
                       <td>
-                        <img
+                        {/* <img
                           src="../../../app-assets/images/icons/user1.png"
                           className="me-75"
                           height={20}
                           width={20}
                           alt="Angular"
-                        />
+                        /> */}
                         <span className="fw-bold">نور العالم </span>
                       </td>
                       <td>0929207542</td>
@@ -127,7 +127,7 @@ function Complaints_Table() {
                       <td>11/21/2022</td>
                       <td>
                       <Link
-                        to='/Profile'
+                        to='/Profile_Timeline'
                           type="button"
                           className="btn btn-primary btn-sm"
                         >
@@ -171,91 +171,46 @@ function Complaints_Table() {
 
                     <tr>
                       <td>
-                        <img
-                          src="../../../app-assets/images/icons/user1.png"
-                          className="me-75"
-                          height={20}
-                          width={20}
-                          alt="Angular"
-                        />
                         <span className="fw-bold">نور العالم </span>
                       </td>
                       <td>0929207542</td>
                       <td>
                         <span className="badge rounded-pill badge-light-danger me-1">
                           {" "}
-                          لم تتم المتابعة بعد
+                         لم يتم الرد
                         </span>
                       </td>
                       <td>الرجاء المساعدة لم اتمكن من الدخول الى التطبيق!!</td>
                       <td>11/21/2022</td>
                       <td>
                       <Link
-                        to='/Profile'
+                        to='/Profile_Timeline'
                           type="button"
                           className="btn btn-primary btn-sm"
                         >
                           متابعة
                         </Link>
 
-                        {/* <UncontrolledDropdown>
-                                <DropdownToggle
-                                  caret
-                                  tag="span"
-                                  className="btn btn-sm dropdown-toggle hide-arrow py-0"
-                                >
-                                  <FeatherIcon icon="more-vertical" />
-                                </DropdownToggle>
-                                <DropdownMenu className="dropdown-menu dropdown-menu-end">
-                                  <DropdownItem className="w-100" onClick={() => {
-                                      
-                                      }}>
-                                    <FeatherIcon
-                                      icon="check"
-                                      className="me-75"
-                                    />
-                                    <span>قبول</span>
-                                  </DropdownItem>
-                                  <DropdownItem
-                                    className="w-100"
-                                    onClick={() => {
-                                      
-                                    }}
-                                  >
-                                    <FeatherIcon
-                                      icon="x"
-                                      className="me-75"
-                                    />
-                                    <span>رفض</span>
-                                  </DropdownItem>
-                                </DropdownMenu>
-                              </UncontrolledDropdown> */}
+                        
                       </td>
                     </tr>
 
                     <tr>
                       <td>
-                        <img
-                          src="../../../app-assets/images/icons/user1.png"
-                          className="me-75"
-                          height={20}
-                          width={20}
-                          alt="Angular"
-                        />
                         <span className="fw-bold">نور العالم </span>
                       </td>
                       <td>0929207542</td>
                       <td>
                         <span className="badge rounded-pill badge-light-danger me-1">
                           {" "}
-                          لم تتم المتابعة بعد
+                         لم يتم الرد
                         </span>
                       </td>
                       <td>الرجاء المساعدة لم اتمكن من الدخول الى التطبيق!!</td>
                       <td>11/21/2022</td>
                       <td>
                       <Link
-                        to='/Profile'
+                        to='/Profile_Timeline'
                           type="button"
                           className="btn btn-primary btn-sm"
                         >
@@ -299,27 +254,20 @@ function Complaints_Table() {
 
                     <tr>
                       <td>
-                        <img
-                          src="../../../app-assets/images/icons/user1.png"
-                          className="me-75"
-                          height={20}
-                          width={20}
-                          alt="Angular"
-                        />
                         <span className="fw-bold">نور العالم </span>
                       </td>
                       <td>0929207542</td>
                       <td>
                         <span className="badge rounded-pill badge-light-success me-1">
                           {" "}
-                          لم تتم المتابعة بعد
+                         تمت المتابعة
                         </span>
                       </td>
                       <td>الرجاء المساعدة لم اتمكن من الدخول الى التطبيق!!</td>
                       <td>11/21/2022</td>
                       <td>
                         <Link
-                        to='/Profile'
+                        to='/Profile_Timeline'
                           type="button"
                           className="btn btn-primary btn-sm"
                         >

@@ -168,7 +168,7 @@ function FollowUp_Table() {
                       <td>شهري</td>
                       <td>
                         <Link
-                          to="/Profile"
+                          to="/Profile_Timeline"
                           type="button"
                           className="btn btn-primary btn-sm"
                         >
@@ -231,7 +231,7 @@ function FollowUp_Table() {
                       <td>شهري</td>
                       <td>
                       <Link
-                        to='/Profile'
+                        to='/Profile_Timeline'
                           type="button"
                           className="btn btn-primary btn-sm"
                         >
@@ -294,7 +294,7 @@ function FollowUp_Table() {
                       <td>شهري</td>
                       <td>
                       <Link
-                        to='/Profile'
+                        to='/Profile_Timeline'
                           type="button"
                           className="btn btn-primary btn-sm"
                         >
@@ -357,7 +357,7 @@ function FollowUp_Table() {
                       <td>شهري</td>
                       <td>
                       <Link
-                        to='/Profile'
+                        to='/Profile_Timeline'
                           type="button"
                           className="btn btn-primary btn-sm"
                         >

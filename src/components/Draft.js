@@ -49,6 +49,39 @@ function Draft() {
                 </div>
 
 
+
+ {/* Plan Card */}
+                  {/* <div className="card border-primary">
+                <div className="card-body">
+                  <div className="d-flex justify-content-between align-items-start">
+                    <span className="badge bg-light-primary">Standard</span>
+                    <div className="d-flex justify-content-center">
+                      <sup className="h5 pricing-currency text-primary mt-1 mb-0">$</sup>
+                      <span className="fw-bolder display-5 mb-0 text-primary">99</span>
+                      <sub className="pricing-duration font-small-4 ms-25 mt-auto mb-2">/month</sub>
+                    </div>
+                  </div>
+                  <ul className="ps-1 mb-2">
+                    <li className="mb-50">10 Users</li>
+                    <li className="mb-50">Up to 10 GB storage</li>
+                    <li>Basic Support</li>
+                  </ul>
+                  <div className="d-flex justify-content-between align-items-center fw-bolder mb-50">
+                    <span>Days</span>
+                    <span>4 of 30 Days</span>
+                  </div>
+                  <div className="progress mb-50" style={{height: 8}}>
+                    <div className="progress-bar" role="progressbar" style={{width: '80%'}} aria-valuenow={65} aria-valuemax={100} aria-valuemin={80} />
+                  </div>
+                  <span>4 days remaining</span>
+                  <div className="d-grid w-100 mt-2">
+                    <button className="btn btn-primary" data-bs-target="#upgradePlanModal" data-bs-toggle="modal">
+                      Upgrade Plan
+                    </button>
+                  </div>
+                </div>
+              </div> */}
+              
     </div>
     
   )
