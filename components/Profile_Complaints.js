@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Nav from './Nav';
 import Sidebar from './Sidebar';
 import Footer from './Footer';
+import Select from "react-select";
 
 function Profile_Complaints() {
 
@@ -12,6 +13,17 @@ function Profile_Complaints() {
     function handleChange(event){
       setValue(event.target.value)
   }
+
+  const options = [
+    { value: "A", label: "الملل" },
+    { value: "B", label: "التعب" },
+    { value: "C", label: "الغضب" },
+    { value: "D", label: "السعادة" },
+    { value: "E", label: "الإكتئاب" },
+    { value: "F", label: "القلق" },
+    { value: "G", label: "الضغط النفسي" },
+    { value: "H", label: "التوتر" },
+  ];
   
   return (
 <body
@@ -436,18 +448,15 @@ function Profile_Complaints() {
                   <input type="text" name="" id="modalEditUserName"  className="form-control" defaultValue="المكرونة" placeholder="الرجاء كتابة أفضل أكلة لديك..." />
                 </div>
                 <div className="col-12 col-md-6">
-                  <label className="form-label" htmlFor="modalEditUserLanguage">سبب الأكل:</label>
-                  <select id="modalEditUserLanguage" name="" className="select2 form-select" multiple>
-                    <option value="">الملل</option>
-                    <option value="">التعب</option>
-                    <option value="">الغضب</option>
-                    <option value="">السعادة</option>
-                    <option value="">الإكتئاب</option>
-                    <option value="">القلق</option>
-                    <option value="">الضغط النفسي</option>
-                    <option value="">التوتر</option>
-                  </select>
-                </div>
+                        <label className="form-label">سبب الأكل:</label>
+
+                        <Select
+                          options={options}
+                          name=""
+                          className="select2"
+                          isMulti
+                        />
+                      </div>
                 
               
                 <div className="col-12 text-center mt-2 pt-50">

@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import Profile_Timeline from "../components/Profile_Timeline";
 import FeatherIcon from "feather-icons-react";
 import { Link } from "react-router-dom";
-import Select from 'react-select'
-import makeAnimated from 'react-select/animated';
+import Select from "react-select";
 import Nav from "../components/Nav";
 import Sidebar from "./Sidebar";
 function Profile_Info() {
@@ -14,15 +13,15 @@ function Profile_Info() {
   }
 
   const options = [
-    { value: 'A', label: 'الملل' },
-    { value: 'B', label: 'التعب' },
-    { value: 'C', label: 'الغضب' },
-    { value: 'D', label: 'السعادة' },
-    { value: 'E', label: 'الإكتئاب' },
-    { value: 'F', label: 'القلق' },
-    { value: 'G', label: 'الضغط النفسي' },
-    { value: 'H', label: 'التوتر' }
-  ]
+    { value: "A", label: "الملل" },
+    { value: "B", label: "التعب" },
+    { value: "C", label: "الغضب" },
+    { value: "D", label: "السعادة" },
+    { value: "E", label: "الإكتئاب" },
+    { value: "F", label: "القلق" },
+    { value: "G", label: "الضغط النفسي" },
+    { value: "H", label: "التوتر" },
+  ];
   return (
     <>
       <div className="app-content content ">
@@ -635,17 +634,14 @@ function Profile_Info() {
                       </div>
 
                       <div className="col-12 col-md-6">
-                        <label
-                          className="form-label"
-                        >
-                          سبب الأكل:
-                        </label>
-                       
-                           <Select options={options} name=""
-                          className="select2" isMulti />
+                        <label className="form-label">سبب الأكل:</label>
 
-                          
-                      
+                        <Select
+                          options={options}
+                          name=""
+                          className="select2"
+                          isMulti
+                        />
                       </div>
                       <div className="col-12">
                         <label
@@ -671,7 +667,6 @@ function Profile_Info() {
                           placeholder="الرجاء كتابة أفضل أكلة لديك..."
                         />
                       </div>
-                      
 
                       <div className="col-12 text-center mt-2 pt-50">
                         <button type="submit" className="btn btn-primary me-1">
