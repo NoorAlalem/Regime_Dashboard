@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Profile_Timeline from "../components/Profile_Timeline";
 import FeatherIcon from "feather-icons-react";
 import { Link } from "react-router-dom";
+import Select from "react-select";
 import Nav from "../components/Nav";
 import Sidebar from "./Sidebar";
 function Profile_Info() {
@@ -11,6 +12,16 @@ function Profile_Info() {
     setValue(event.target.value);
   }
 
+  const options = [
+    { value: "A", label: "الملل" },
+    { value: "B", label: "التعب" },
+    { value: "C", label: "الغضب" },
+    { value: "D", label: "السعادة" },
+    { value: "E", label: "الإكتئاب" },
+    { value: "F", label: "القلق" },
+    { value: "G", label: "الضغط النفسي" },
+    { value: "H", label: "التوتر" },
+  ];
   return (
     <>
       <div className="app-content content ">
@@ -621,6 +632,17 @@ function Profile_Info() {
                           <option value=""> 3 لتر أو أكثر </option>
                         </select>
                       </div>
+
+                      <div className="col-12 col-md-6">
+                        <label className="form-label">سبب الأكل:</label>
+
+                        <Select
+                          options={options}
+                          name=""
+                          className="select2"
+                          isMulti
+                        />
+                      </div>
                       <div className="col-12">
                         <label
                           className="form-label"
@@ -644,29 +666,6 @@ function Profile_Info() {
                           defaultValue="المكرونة"
                           placeholder="الرجاء كتابة أفضل أكلة لديك..."
                         />
-                      </div>
-                      <div className="col-12 col-md-6">
-                        <label
-                          className="form-label"
-                          htmlFor="modalEditUserLanguage"
-                        >
-                          سبب الأكل:
-                        </label>
-                        <select
-                          id="modalEditUserLanguage"
-                          name=""
-                          className="select2 form-select"
-                          multiple
-                        >
-                          <option value="">الملل</option>
-                          <option value="">التعب</option>
-                          <option value="">الغضب</option>
-                          <option value="">السعادة</option>
-                          <option value="">الإكتئاب</option>
-                          <option value="">القلق</option>
-                          <option value="">الضغط النفسي</option>
-                          <option value="">التوتر</option>
-                        </select>
                       </div>
 
                       <div className="col-12 text-center mt-2 pt-50">
