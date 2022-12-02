@@ -2,10 +2,14 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 import Complaints from "../pages/Complaints";
 import FollowUp from "../pages/FollowUp";
+import Ingredients from "../pages/Ingredients";
+import Meals from "../pages/Meals";
 import Profile_Complaints from "../pages/Profile_Complaints";
 import Profile_Subscription from "../pages/Profile_Subscription";
 import Profile_Timeline from "../pages/Profile_Timeline";
 import Users from "../pages/Users";
+import Edit_Ingredident from "./Edit_Ingredident";
+import Edit_Meal from "./Edit_Meal";
 import Nav from "./Nav";
 import Profile_Complaints_Details from "./Profile_Complaints_Details";
 import Profile_Edit_Info from "./Profile_Edit_Info";
@@ -37,6 +41,10 @@ function App() {
            <Route path="/Profile_Complaints" exact element={<Profile_Complaints />} />
            <Route path="/Profile_Timeline" exact element={<Profile_Timeline />} />
            <Route path="/Profile_Subscription" exact element={<Profile_Subscription />} />
+           <Route path="/Meals" exact element={<Meals />} />
+           <Route path="/Ingredients" exact element={<Ingredients />} />
+           <Route path="/Edit_Meal" exact element={<Edit_Meal />} />
+           <Route path="/Edit_Ingredident" exact element={<Edit_Ingredident />} />
         </Routes>
       </Router>
       <div class="sidenav-overlay"></div>

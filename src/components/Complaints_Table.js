@@ -96,24 +96,18 @@ function Complaints_Table() {
                 >
                   <thead>
                     <tr>
+                    <th>#</th>
                       <th>اسم المشترك </th>
                       <th>رقم الهاتف</th>
                       <th>الحـالة</th>
-                      <th>الشكوى </th>
                       <th> تايخ الشكوى</th>
                       <th> </th>
                     </tr>
                   </thead>
                   <tbody>
                     <tr>
+                      <td>1</td>
                       <td>
-                        {/* <img
-                          src="../../../app-assets/images/icons/user1.png"
-                          className="me-75"
-                          height={20}
-                          width={20}
-                          alt="Angular"
-                        /> */}
                         <span className="fw-bold">نور العالم </span>
                       </td>
                       <td>0929207542</td>
@@ -123,7 +117,6 @@ function Complaints_Table() {
                           لم تتم المتابعة بعد
                         </span>
                       </td>
-                      <td>الرجاء المساعدة لم اتمكن من الدخول الى التطبيق!!</td>
                       <td>11/21/2022</td>
                       <td>
                       <Link
@@ -134,125 +127,10 @@ function Complaints_Table() {
                           متابعة
                         </Link>
 
-                        {/* <UncontrolledDropdown>
-                                <DropdownToggle
-                                  caret
-                                  tag="span"
-                                  className="btn btn-sm dropdown-toggle hide-arrow py-0"
-                                >
-                                  <FeatherIcon icon="more-vertical" />
-                                </DropdownToggle>
-                                <DropdownMenu className="dropdown-menu dropdown-menu-end">
-                                  <DropdownItem className="w-100" onClick={() => {
-                                      
-                                      }}>
-                                    <FeatherIcon
-                                      icon="check"
-                                      className="me-75"
-                                    />
-                                    <span>قبول</span>
-                                  </DropdownItem>
-                                  <DropdownItem
-                                    className="w-100"
-                                    onClick={() => {
-                                      
-                                    }}
-                                  >
-                                    <FeatherIcon
-                                      icon="x"
-                                      className="me-75"
-                                    />
-                                    <span>رفض</span>
-                                  </DropdownItem>
-                                </DropdownMenu>
-                              </UncontrolledDropdown> */}
                       </td>
                     </tr>
-
                     <tr>
-                      <td>
-                        <span className="fw-bold">نور العالم </span>
-                      </td>
-                      <td>0929207542</td>
-                      <td>
-                        <span className="badge rounded-pill badge-light-danger me-1">
-                          {" "}
-                         لم يتم الرد
-                        </span>
-                      </td>
-                      <td>الرجاء المساعدة لم اتمكن من الدخول الى التطبيق!!</td>
-                      <td>11/21/2022</td>
-                      <td>
-                      <Link
-                        to='/Profile_Timeline'
-                          type="button"
-                          className="btn btn-primary btn-sm"
-                        >
-                          متابعة
-                        </Link>
-
-                        
-                      </td>
-                    </tr>
-
-                    <tr>
-                      <td>
-                        <span className="fw-bold">نور العالم </span>
-                      </td>
-                      <td>0929207542</td>
-                      <td>
-                        <span className="badge rounded-pill badge-light-danger me-1">
-                          {" "}
-                         لم يتم الرد
-                        </span>
-                      </td>
-                      <td>الرجاء المساعدة لم اتمكن من الدخول الى التطبيق!!</td>
-                      <td>11/21/2022</td>
-                      <td>
-                      <Link
-                        to='/Profile_Timeline'
-                          type="button"
-                          className="btn btn-primary btn-sm"
-                        >
-                          متابعة
-                        </Link>
-
-                        {/* <UncontrolledDropdown>
-                                <DropdownToggle
-                                  caret
-                                  tag="span"
-                                  className="btn btn-sm dropdown-toggle hide-arrow py-0"
-                                >
-                                  <FeatherIcon icon="more-vertical" />
-                                </DropdownToggle>
-                                <DropdownMenu className="dropdown-menu dropdown-menu-end">
-                                  <DropdownItem className="w-100" onClick={() => {
-                                      
-                                      }}>
-                                    <FeatherIcon
-                                      icon="check"
-                                      className="me-75"
-                                    />
-                                    <span>قبول</span>
-                                  </DropdownItem>
-                                  <DropdownItem
-                                    className="w-100"
-                                    onClick={() => {
-                                      
-                                    }}
-                                  >
-                                    <FeatherIcon
-                                      icon="x"
-                                      className="me-75"
-                                    />
-                                    <span>رفض</span>
-                                  </DropdownItem>
-                                </DropdownMenu>
-                              </UncontrolledDropdown> */}
-                      </td>
-                    </tr>
-
-                    <tr>
+                      <td>2</td>
                       <td>
                         <span className="fw-bold">نور العالم </span>
                       </td>
@@ -263,10 +141,9 @@ function Complaints_Table() {
                          تمت المتابعة
                         </span>
                       </td>
-                      <td>الرجاء المساعدة لم اتمكن من الدخول الى التطبيق!!</td>
                       <td>11/21/2022</td>
                       <td>
-                        <Link
+                      <Link
                         to='/Profile_Timeline'
                           type="button"
                           className="btn btn-primary btn-sm"
@@ -274,40 +151,57 @@ function Complaints_Table() {
                           متابعة
                         </Link>
 
-                        {/* <UncontrolledDropdown>
-                                <DropdownToggle
-                                  caret
-                                  tag="span"
-                                  className="btn btn-sm dropdown-toggle hide-arrow py-0"
-                                >
-                                  <FeatherIcon icon="more-vertical" />
-                                </DropdownToggle>
-                                <DropdownMenu className="dropdown-menu dropdown-menu-end">
-                                  <DropdownItem className="w-100" onClick={() => {
-                                      
-                                      }}>
-                                    <FeatherIcon
-                                      icon="check"
-                                      className="me-75"
-                                    />
-                                    <span>قبول</span>
-                                  </DropdownItem>
-                                  <DropdownItem
-                                    className="w-100"
-                                    onClick={() => {
-                                      
-                                    }}
-                                  >
-                                    <FeatherIcon
-                                      icon="x"
-                                      className="me-75"
-                                    />
-                                    <span>رفض</span>
-                                  </DropdownItem>
-                                </DropdownMenu>
-                              </UncontrolledDropdown> */}
                       </td>
                     </tr>
+                    <tr>
+                      <td>3</td>
+                      <td>
+                        <span className="fw-bold">نور العالم </span>
+                      </td>
+                      <td>0929207542</td>
+                      <td>
+                        <span className="badge rounded-pill badge-light-danger me-1">
+                          {" "}
+                         لم يتم الرد
+                        </span>
+                      </td>
+                      <td>11/21/2022</td>
+                      <td>
+                      <Link
+                        to='/Profile_Timeline'
+                          type="button"
+                          className="btn btn-primary btn-sm"
+                        >
+                          متابعة
+                        </Link>
+
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>4</td>
+                      <td>
+                        <span className="fw-bold">نور العالم </span>
+                      </td>
+                      <td>0929207542</td>
+                      <td>
+                        <span className="badge rounded-pill badge-light-success me-1">
+                          {" "}
+                         تمت المتابعة
+                        </span>
+                      </td>
+                      <td>11/21/2022</td>
+                      <td>
+                      <Link
+                        to='/Profile_Timeline'
+                          type="button"
+                          className="btn btn-primary btn-sm"
+                        >
+                          متابعة
+                        </Link>
+
+                      </td>
+                    </tr>
+                   
                   </tbody>
                 </table>
               </div>

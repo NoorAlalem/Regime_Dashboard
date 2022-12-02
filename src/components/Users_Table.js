@@ -136,6 +136,7 @@ function Users_Table() {
                 >
                   <thead>
                     <tr>
+                      <th>#</th>
                       <th>اسم المشترك </th>
                       <th>رقم الهاتف</th>
                       <th>الجنس</th>
@@ -148,167 +149,81 @@ function Users_Table() {
                   </thead>
                   <tbody>
                     <tr>
+                      <td>1</td>
                       <td>
-                        {/* <img
-                          src="../../../app-assets/images/icons/user1.png"
-                          className="me-75"
-                          height={20}
-                          width={20}
-                          alt="Angular"
-                        /> */}
                         <span className="fw-bold">نور العالم </span>
                       </td>
                       <td>0929207542</td>
                       <td>انثى</td>
                       <td>
-                        {/* <span className="badge rounded-pill badge-light-primary me-1">Active</span> */}
                         24
                       </td>
                       <td>23.5</td>
-                      {/* <div className="dropdown">
-                  <button type="button" className="btn btn-sm dropdown-toggle hide-arrow py-0" data-bs-toggle="dropdown">
-                    <i data-feather="more-vertical" />
-                  </button>
-                  <div className="dropdown-menu dropdown-menu-end">
-                    <a className="dropdown-item" href="#">
-                      <i data-feather="edit-2" className="me-50" />
-                      <span>Edit</span>
-                    </a>
-                    <a className="dropdown-item" href="#">
-                      <i data-feather="trash" className="me-50" />
-                      <span>Delete</span>
-                    </a>
-                  </div>
-                </div> */}
-                      <td>تثبيت وزن</td>
-                      <td>1850</td>
-                      <td>شهري</td>
-                    </tr>
-
-                    <tr>
-                      <td>
-                      
-                        <span className="fw-bold">نور العالم </span>
-                      </td>
-                      <td>0929207542</td>
-                      <td>انثى</td>
-                      <td>
-                        {/* <span className="badge rounded-pill badge-light-primary me-1">Active</span> */}
-                        24
-                      </td>
-                      <td>23.5</td>
-                      {/* <div className="dropdown">
-                  <button type="button" className="btn btn-sm dropdown-toggle hide-arrow py-0" data-bs-toggle="dropdown">
-                    <i data-feather="more-vertical" />
-                  </button>
-                  <div className="dropdown-menu dropdown-menu-end">
-                    <a className="dropdown-item" href="#">
-                      <i data-feather="edit-2" className="me-50" />
-                      <span>Edit</span>
-                    </a>
-                    <a className="dropdown-item" href="#">
-                      <i data-feather="trash" className="me-50" />
-                      <span>Delete</span>
-                    </a>
-                  </div>
-                </div> */}
                       <td>تثبيت وزن</td>
                       <td>1850</td>
                       <td>شهري</td>
                     </tr>
                     <tr>
+                      <td>2</td>
                       <td>
-                      
                         <span className="fw-bold">نور العالم </span>
                       </td>
                       <td>0929207542</td>
                       <td>انثى</td>
                       <td>
-                        {/* <span className="badge rounded-pill badge-light-primary me-1">Active</span> */}
                         24
                       </td>
                       <td>23.5</td>
-                      {/* <div className="dropdown">
-                  <button type="button" className="btn btn-sm dropdown-toggle hide-arrow py-0" data-bs-toggle="dropdown">
-                    <i data-feather="more-vertical" />
-                  </button>
-                  <div className="dropdown-menu dropdown-menu-end">
-                    <a className="dropdown-item" href="#">
-                      <i data-feather="edit-2" className="me-50" />
-                      <span>Edit</span>
-                    </a>
-                    <a className="dropdown-item" href="#">
-                      <i data-feather="trash" className="me-50" />
-                      <span>Delete</span>
-                    </a>
-                  </div>
-                </div> */}
                       <td>تثبيت وزن</td>
                       <td>1850</td>
                       <td>شهري</td>
                     </tr>
                     <tr>
+                      <td>3</td>
                       <td>
-                       
                         <span className="fw-bold">نور العالم </span>
                       </td>
                       <td>0929207542</td>
                       <td>انثى</td>
                       <td>
-                        {/* <span className="badge rounded-pill badge-light-primary me-1">Active</span> */}
                         24
                       </td>
                       <td>23.5</td>
-                      {/* <div className="dropdown">
-                  <button type="button" className="btn btn-sm dropdown-toggle hide-arrow py-0" data-bs-toggle="dropdown">
-                    <i data-feather="more-vertical" />
-                  </button>
-                  <div className="dropdown-menu dropdown-menu-end">
-                    <a className="dropdown-item" href="#">
-                      <i data-feather="edit-2" className="me-50" />
-                      <span>Edit</span>
-                    </a>
-                    <a className="dropdown-item" href="#">
-                      <i data-feather="trash" className="me-50" />
-                      <span>Delete</span>
-                    </a>
-                  </div>
-                </div> */}
                       <td>تثبيت وزن</td>
                       <td>1850</td>
                       <td>شهري</td>
                     </tr>
-                    <tr className="">
+                    <tr>
+                      <td>4</td>
                       <td>
-                      
                         <span className="fw-bold">نور العالم </span>
                       </td>
                       <td>0929207542</td>
                       <td>انثى</td>
                       <td>
-                        {/* <span className="badge rounded-pill badge-light-primary me-1">Active</span> */}
                         24
                       </td>
                       <td>23.5</td>
-                      {/* <div className="dropdown">
-                  <button type="button" className="btn btn-sm dropdown-toggle hide-arrow py-0" data-bs-toggle="dropdown">
-                    <i data-feather="more-vertical" />
-                  </button>
-                  <div className="dropdown-menu dropdown-menu-end">
-                    <a className="dropdown-item" href="#">
-                      <i data-feather="edit-2" className="me-50" />
-                      <span>Edit</span>
-                    </a>
-                    <a className="dropdown-item" href="#">
-                      <i data-feather="trash" className="me-50" />
-                      <span>Delete</span>
-                    </a>
-                  </div>
-                </div> */}
                       <td>تثبيت وزن</td>
                       <td>1850</td>
                       <td>شهري</td>
                     </tr>
+                    <tr>
+                      <td>5</td>
+                      <td>
+                        <span className="fw-bold">نور العالم </span>
+                      </td>
+                      <td>0929207542</td>
+                      <td>انثى</td>
+                      <td>
+                        24
+                      </td>
+                      <td>23.5</td>
+                      <td>تثبيت وزن</td>
+                      <td>1850</td>
+                      <td>شهري</td>
+                    </tr>
+                   
                   </tbody>
                 </table>
               </div>
