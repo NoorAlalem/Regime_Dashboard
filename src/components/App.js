@@ -15,6 +15,12 @@ import Profile_Complaints_Details from "./Profile_Complaints_Details";
 import Profile_Edit_Info from "./Profile_Edit_Info";
 import Profile_Info_Details from "./Profile_Info_Details";
 import Sidebar from "./Sidebar";
+import Modal from 'react-modal';
+import Calendar from "../pages/Calendar";
+
+
+Modal.setAppElement('#root');
+
 
 function App() {
   return (
@@ -45,6 +51,7 @@ function App() {
            <Route path="/Ingredients" exact element={<Ingredients />} />
            <Route path="/Edit_Meal" exact element={<Edit_Meal />} />
            <Route path="/Edit_Ingredident" exact element={<Edit_Ingredident />} />
+           <Route path="/Calendar" exact element={<Calendar />} />
         </Routes>
       </Router>
       <div class="sidenav-overlay"></div>

@@ -127,14 +127,13 @@ function Edit_Ingredident() {
                   <div className="row">
                     <div className="col-12">
                         <center className="mt-1">
-                         <Link
-                          to="/Edit_Ingredident"
+                         <button
                           type="button"
-                          className="btn btn-primary"
+                          className="btn btn-success"
                           style={{width:'100px'}}
                         >
                           تأكيـد
-                        </Link></center>
+                        </button></center>
 
                    
                     </div>

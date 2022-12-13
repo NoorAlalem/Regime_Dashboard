@@ -1,10 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
 import Footer from "./Footer";
 import Nav from "./Nav";
 import Sidebar from "./Sidebar";
 import Select from "react-select";
 
 function Edit_Meal() {
+
+
+const [formFields, setFormFields] = useState([
+
+  {name: '', quantity: ''}
+])
+
+const handleChange = (event, index) => {
+  // console.log(index, event.target.name)
+
+  let data= [...formFields];
+  data[index][event.target.name] = event.target.value;
+  setFormFields(data);
+
+}
+
+const submit = (e) => {
+  e.preventDefault();
+  console.log(formFields)
+}
+
+const addFields = (e) =>{
+  e.preventDefault();
+  
+  let object = {
+    name:'', 
+    quantity: ''
+  }
+  setFormFields([...formFields, object]);
+}
+
+const removeFields = (index,e) => {
+  // console.log(index);
+  let data=[...formFields];
+  data.splice(index, 1);
+
+  setFormFields(data);
+
+}
+
   const sensitive = [
     { value: "A", label: "ألبان" },
     { value: "B", label: "الفول السوداني" },
@@ -35,6 +75,22 @@ function Edit_Meal() {
     { value: "H", label: "Whole30" },
   ];
 
+  const Ingredient = [
+    { value: "A", label: "صدور دجاج" },
+    { value: "B", label: "شوفان" },
+    { value: "C", label: "حليب" },
+    { value: "D", label: "موز" },
+    { value: "E", label: "حليب قليل الدسم" },
+    { value: "F", label: "زبدة الفول السدواني" },
+    { value: "G", label: "عسل طبيعي" },
+    { value: "H", label: "ملفوف الأحمر" },
+    { value: "H", label: "صدر دجاج" },
+    { value: "H", label: "بطاطس" },
+    { value: "H", label: "كرومب زهرة" },
+    { value: "H", label: "ملح" },
+  ];
+
+  
   return (
     <>
       <Nav />
@@ -59,7 +115,7 @@ function Edit_Meal() {
               <div className="card">
                 <div className="card-body mt-2">
                   <form className="dt_adv_search" method="POST">
-                    <div className="row g-1 mb-md-4">
+                    <div className="row g-1 mb-md-4 mb-1">
                       <div className="col-md-3">
                         <label className="form-label">
                           {" "}
@@ -72,10 +128,9 @@ function Edit_Meal() {
                           placeholder="سلطة..."
                         />
                       </div>
-                     
                     </div>
                     <div className="row g-1 mb-md-4">
-                    <div className="col-md-3">
+                      <div className="col-md-3">
                         <label className="form-label">
                           {" "}
                           <b> وقت التحضير بالدقائق</b>{" "}
@@ -111,7 +166,7 @@ function Edit_Meal() {
                           placeholder="15د"
                         />
                       </div>
-                      <div className="col-md-3 user_status">
+                      <div className="col-md-3 mb-1">
                         <label className="form-label">
                           <b> الثمن</b>
                         </label>
@@ -127,7 +182,6 @@ function Edit_Meal() {
                     </div>
 
                     <div className="row g-1 mb-md-4">
-                    
                       <div className="col-md-3 user_status">
                         <label className="form-label">
                           {" "}
@@ -168,7 +222,7 @@ function Edit_Meal() {
                         </select>
                       </div>
 
-                      <div className="col-md-3 user_status">
+                      <div className="col-md-3 mb-1">
                         <label className="form-label">
                           <b> نوع الوجبة 2</b>
                         </label>
@@ -190,26 +244,104 @@ function Edit_Meal() {
                           </option>
                         </select>
                       </div>
-                     
                     </div>
-                    <div className="row">
+                    <div className="row g-1 mb-md-4 mb-1">
                       <div className="col-12">
-                        <div className="mb-2">
-                          <label className="form-label fw-bold">
-                            {" "}
-                            <b> تعليمات</b>{" "}
-                          </label>
-                          <textarea
-                            className="form-control"
-                            rows={2}
-                            id="note"
-                            defaultValue={""}
-                            placeholder="تعليمات تخص هذه الوجبة..."
-                          />
-                        </div>
+                        <label className="form-label fw-bold">
+                          {" "}
+                          <b> تعليمات</b>{" "}
+                        </label>
+                        <textarea
+                          className="form-control"
+                          rows={2}
+                          id="note"
+                          defaultValue={""}
+                          placeholder="تعليمات تخص هذه الوجبة..."
+                        />
                       </div>
                     </div>
-                   {/* HERE  */}
+                    {/* HERE  */}
+                    <div className="row g-1 mb-md-4">
+                    <form onSubmit={submit} className="invoice-repeater">
+                      {formFields.map((form, index) => {
+                        return (
+                          <div key={index}>
+                        <div data-repeater-list="invoice">
+                          <div data-repeater-item>
+                            <div className="row d-flex align-items-end mb-4">
+                              <div className="col-md-3 mb-1">
+                                <label className="form-label">
+                                  {" "}
+                                  <b> اسم المكوّن</b>
+                                </label>
+
+                                <Select onChange={event => handleChange(event, index)} value={form.name} options={Ingredient} name="name" />
+                              </div>
+
+                              <div className="col-md-2 mb-1">
+                                <label className="form-label">
+                                  {" "}
+                                  <b> وحدة القياس</b>
+                                </label>
+
+                                <input
+                                  readOnly
+                                  className="form-control ms-50"
+                                />
+                              </div>
+                              <div className="col-md-3 mb-1">
+                                <label className="form-label">
+                                  {" "}
+                                  <b> كمية المكونات </b>
+                                </label>
+
+                                <input
+                                  onChange={event => handleChange(event, index)}
+                                  value={form.quantity}
+                                  name='quantity'
+                                  type="text"
+                                  className="form-control ms-50"
+                                  defaultValue={0}
+                                />
+                              </div>
+
+                              <div className="col-md-3 mt-1 mb-1">
+                                <button
+                                  onClick={() => removeFields(index)}
+                                  className="btn btn-outline-danger"
+                                >
+                                  حذف
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                       
+
+                     
+                      
+                            </div>
+                      
+                        )
+                      })}
+                       <div className="row">
+                          <div className="col-md-3">
+                            <button onClick={addFields} className="btn btn-primary waves-effect waves-float waves-light">
+                              اضافة مكوّن
+                            </button>
+                          </div>
+                        </div>
+                    </form>
+                    </div>
+                    <div
+                          className="row justify-content-center"
+                        >
+                          <div className="col-md-3 mt-1">
+                            <button onClick={submit}  className="btn btn-success" style={{width:'115px'}}>
+                              تأكيـد
+                            </button>
+                          </div>
+                        </div>
                   </form>
                 </div>
               </div>
