@@ -7,7 +7,7 @@ function Meals_Table() {
 
   const fetchMeals = async ({ queryKey }) => {
     const response = await fetch(
-      `https://mealsandingrdents.tip.libyanspider.cloud/dashboard/meal`
+      `https://mealsandingrdents-server-production.up.railway.app/dashboard/meal`
     );
     const data = await response.json();
     return data;
@@ -208,20 +208,20 @@ function Meals_Table() {
                       </td>
                     </tr> */}
                     {data.data.map((meal, index) => (
-                      <tr>
+                      <tr key={meal?._id}>
                         <td> {index + 1} </td>
                         <td>
-                          <span className='fw-bold '>{meal.name}</span>
+                          <span className='fw-bold '>{meal?.name}</span>
                         </td>
                         <td>
-                          {meal.mealType[0]}, {meal.mealType[1]}
+                          {meal?.mealType[0]}, {meal?.mealType[1]}
                         </td>
-                        <td>{meal.nutrition.calories}</td>
+                        <td>{meal?.nutrition?.calories}</td>
 
-                        <td>{meal.nutrition.protein}</td>
+                        <td>{meal?.nutrition?.protein}</td>
                         <td>
                           <Link
-                            to='/Edit_Meal'
+                            to={`/meal/${meal?._id}`}
                             type='button'
                             className='btn btn-primary btn-sm'
                           >

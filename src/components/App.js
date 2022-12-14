@@ -69,13 +69,12 @@ function App() {
               />
               <Route path='/Meals' exact element={<Meals />} />
               <Route path='/Ingredients' exact element={<Ingredients />} />
-              <Route path='/Edit_Meal' exact element={<Edit_Meal />} />
+              <Route path='/Calendar' exact element={<Calendar />} />
               <Route
-                path='/Edit_Ingredident'
-                exact
+                path='/ingredident/:ingredidentId'
                 element={<Edit_Ingredident />}
               />
-              <Route path='/Calendar' exact element={<Calendar />} />
+              <Route path='/meal/:mealId' element={<Edit_Meal />} />
             </Routes>
           </Router>
         </QueryClientProvider>

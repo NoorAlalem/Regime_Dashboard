@@ -7,7 +7,7 @@ function Ingredidents_Table() {
 
   const fetchIngredidents = async ({ queryKey }) => {
     const response = await fetch(
-      `https://mealsandingrdents.tip.libyanspider.cloud/dashboard/ingredient`
+      `https://mealsandingrdents-server-production.up.railway.app/dashboard/ingredient`
     );
     const data = await response.json();
     return data;
@@ -153,25 +153,25 @@ function Ingredidents_Table() {
                       </td>
                     </tr> */}
                     {data.data.map((ingredident, index) => (
-                      <tr>
+                      <tr key={ingredident?._id}>
                         <td> {index + 1} </td>
                         <td>
                           <span className='fw-bold'>
-                            {ingredident.ingredientName}
+                            {ingredident?.ingredientName}
                           </span>
                         </td>
-                        <td>{ingredident.nutrition.calories}</td>
+                        <td>{ingredident?.nutrition?.calories}</td>
                         <td>
-                          {ingredident.quantity}
-                          {ingredident.unitOfMeasure}
+                          {ingredident?.quantity}
+                          {ingredident?.unitOfMeasure}
                         </td>
-                        <td>{ingredident.nutrition.protein}g</td>
-                        <td>{ingredident.nutrition.carbohydrates}g</td>
-                        <td>{ingredident.nutrition.fat}g</td>
+                        <td>{ingredident?.nutrition?.protein}g</td>
+                        <td>{ingredident?.nutrition?.carbohydrates}g</td>
+                        <td>{ingredident?.nutrition?.fat}g</td>
 
                         <td>
                           <Link
-                            to='/Edit_Ingredident'
+                            to={`/ingredident/${ingredident._id}`}
                             type='button'
                             className='btn btn-primary btn-sm'
                           >
