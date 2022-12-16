@@ -11,6 +11,8 @@ import {
 } from 'reactstrap';
 import Profile_Edit_Info from './Profile_Edit_Info';
 import Profile_Info_Details from './Profile_Info_Details';
+import formatSub from '../utils/sub';
+
 function Profile_Subscription_Details({ user, userId }) {
   const [value, setValue] = useState();
 
@@ -88,8 +90,10 @@ function Profile_Subscription_Details({ user, userId }) {
                             <strong className='badge badge-light-primary ms-50'>
                               {user?.subscriptions?.length < 1
                                 ? 'لا يوجد'
-                                : user?.subscriptions[0].subOtherPlatform ||
-                                  user?.subscriptions[0].sub.name}
+                                : formatSub(
+                                    user?.subscriptions[0].subOtherPlatform
+                                  ) ||
+                                  formatSub(user?.subscriptions[0].sub.name)}
                             </strong>
                           </h5>
                         </div>
@@ -104,11 +108,14 @@ function Profile_Subscription_Details({ user, userId }) {
                                   )[0]}
                             </strong>
                           </h5>
-                          <span className='badge badge-light-danger ms-50'>
-                            {user?.subscriptions?.length < 1
-                              ? 'لا يوجد'
-                              : user?.subscriptions[0].endDate.split('T')[0]}
-                          </span>
+                          <h5>
+                            تاريخ انتهاء الاشتراك
+                            <strong className='badge badge-light-danger ms-50'>
+                              {user?.subscriptions?.length < 1
+                                ? 'لا يوجد'
+                                : user?.subscriptions[0].endDate.split('T')[0]}
+                            </strong>
+                          </h5>
                         </div>
                         {/* <div className="mb-2 mb-md-1">
           <h5>$199 Per Month <span className="badge badge-light-primary ms-50">Popular</span></h5>

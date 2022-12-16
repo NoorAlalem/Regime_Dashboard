@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import Select from 'react-select';
 import Nav from './Nav';
 import Sidebar from './Sidebar';
+import formatSub from '../utils/sub';
+
 function Profile_Info_Details({ user }) {
   const [value, setValue] = useState();
   function handleChange(event) {
@@ -40,8 +42,8 @@ function Profile_Info_Details({ user }) {
                 <span className='badge bg-light-secondary'>
                   {user?.subscriptions?.length < 1
                     ? 'لا يوجد'
-                    : user?.subscriptions[0].subOtherPlatform ||
-                      user?.subscriptions[0].sub.name}
+                    : formatSub(user?.subscriptions[0].subOtherPlatform) ||
+                      formatSub(user?.subscriptions[0].sub.name)}
                 </span>
               </div>
             </div>

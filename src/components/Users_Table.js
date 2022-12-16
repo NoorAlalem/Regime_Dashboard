@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import FeatherIcon from 'feather-icons-react';
 import { useQuery } from 'react-query';
+import formatSub from '../utils/sub';
 
 function Users_Table() {
   const [page, setPage] = useState(1);
@@ -188,8 +189,9 @@ function Users_Table() {
                         <td>
                           {user?.subscriptions?.length < 1
                             ? 'لا يوجد'
-                            : user?.subscriptions[0].subOtherPlatform ||
-                              user?.subscriptions[0].sub.name}
+                            : formatSub(
+                                user?.subscriptions[0].subOtherPlatform
+                              ) || formatSub(user?.subscriptions[0].sub.name)}
                         </td>
                         <td>
                           {user?.subscriptions?.length < 1
