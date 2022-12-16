@@ -142,7 +142,7 @@ function Complaints_Table() {
                             {ticket?.status}
                           </span>
                         </td>
-                        <td>11/21/2022</td>
+                        <td>{ticket?.createdAt.split('T')[0]}</td>
                         <td>
                           <Link
                             to='/Profile_Timeline'

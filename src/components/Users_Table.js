@@ -1,19 +1,43 @@
-import React from "react";
-import FeatherIcon from "feather-icons-react";
+import React, { useState } from 'react';
+import FeatherIcon from 'feather-icons-react';
+import { useQuery } from 'react-query';
 
 function Users_Table() {
-  return (
-    <div className="app-content content ">
-      <div className="content-overlay" />
-      <div className="header-navbar-shadow" />
+  const [page, setPage] = useState(1);
+  const fetchUser = async ({ queryKey }) => {
+    const response = await fetch(
+      `https://mealsandingrdents-server-production.up.railway.app/dashboard/user`
+    );
+    const data = await response.json();
+    return data;
+  };
+  const { data, status, isPreviousData } = useQuery(
+    ['users', page],
+    fetchUser,
+    {
+      keepPreviousData: true,
+    }
+  );
 
-      <div className="content-wrapper container-xxl p-0">
-        <div className="content-header row">
-          <div className="content-header-left col-md-9 col-12 mb-2">
-            <div className="row breadcrumbs-top">
-              <div className="col-12">
-                <h1 className="float-start mb-0 text-primary">
-                  {" "}
+  if (status === 'loading') {
+    return <div>Loading...</div>;
+  }
+
+  if (status === 'error') {
+    return <div>Error fetching data</div>;
+  }
+  return (
+    <div className='app-content content '>
+      <div className='content-overlay' />
+      <div className='header-navbar-shadow' />
+
+      <div className='content-wrapper container-xxl p-0'>
+        <div className='content-header row'>
+          <div className='content-header-left col-md-9 col-12 mb-2'>
+            <div className='row breadcrumbs-top'>
+              <div className='col-12'>
+                <h1 className='float-start mb-0 text-primary'>
+                  {' '}
                   جميع المشتركين
                 </h1>
               </div>
@@ -21,84 +45,84 @@ function Users_Table() {
           </div>
         </div>
 
-        <div className="row" id="table-hover-row">
-          <div className="col-12">
-            <div className="card">
-              <div className="card-body mt-2">
-                <form className="dt_adv_search" method="POST">
-                  <div className="row g-1 mb-md-1">
-                    <div className="col-md-4">
-                      <label className="form-label">
-                        {" "}
-                        <b> البحث عن جميع بيانات الجدول: </b>{" "}
+        <div className='row' id='table-hover-row'>
+          <div className='col-12'>
+            <div className='card'>
+              <div className='card-body mt-2'>
+                <form className='dt_adv_search' method='POST'>
+                  <div className='row g-1 mb-md-1'>
+                    <div className='col-md-4'>
+                      <label className='form-label'>
+                        {' '}
+                        <b> البحث عن جميع بيانات الجدول: </b>{' '}
                       </label>
                       <div
-                        style={{ width: "100.7%", marginTop: "3px" }}
-                        className="input-group "
+                        style={{ width: '100.7%', marginTop: '3px' }}
+                        className='input-group '
                       >
                         <span
-                          className="input-group-text"
-                          id="basic-addon-search1"
+                          className='input-group-text'
+                          id='basic-addon-search1'
                         >
                           <svg
-                            xmlns="http://www.w3.org/2000/svg"
+                            xmlns='http://www.w3.org/2000/svg'
                             width={14}
                             height={14}
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
+                            viewBox='0 0 24 24'
+                            fill='none'
+                            stroke='currentColor'
                             strokeWidth={2}
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className="feather feather-search"
+                            strokeLinecap='round'
+                            strokeLinejoin='round'
+                            className='feather feather-search'
                           >
                             <circle cx={11} cy={11} r={8} />
-                            <line x1={21} y1={21} x2="16.65" y2="16.65" />
+                            <line x1={21} y1={21} x2='16.65' y2='16.65' />
                           </svg>
                         </span>
                         <input
-                          type="text"
-                          className="form-control"
-                          placeholder="البحث عن معلومات الزبائن..."
-                          aria-label="Search..."
-                          aria-describedby="basic-addon-search1"
+                          type='text'
+                          className='form-control'
+                          placeholder='البحث عن معلومات الزبائن...'
+                          aria-label='Search...'
+                          aria-describedby='basic-addon-search1'
                         />
                       </div>
                     </div>
-                    <div className="col-md-4 user_status">
-                      <label className="form-label">
+                    <div className='col-md-4 user_status'>
+                      <label className='form-label'>
                         <b> الجنس </b>
                       </label>
-                      <select className="form-select text-capitalize mb-md-0 mb-2xx">
-                        <option value="new" className="text-capitalize">
+                      <select className='form-select text-capitalize mb-md-0 mb-2xx'>
+                        <option value='new' className='text-capitalize'>
                           الكل
                         </option>
-                        <option value="new" className="text-capitalize">
+                        <option value='new' className='text-capitalize'>
                           انثى
                         </option>
-                        <option value="old" className="text-capitalize">
+                        <option value='old' className='text-capitalize'>
                           ذكر
                         </option>
                       </select>
                     </div>
-                    <div className="col-md-4 user_plan">
-                      <label className="form-label" htmlFor="UserPlan">
+                    <div className='col-md-4 user_plan'>
+                      <label className='form-label' htmlFor='UserPlan'>
                         <b> نوع الإشتراك </b>
                       </label>
                       <select
-                        id="UserPlan"
-                        className="form-select text-capitalize mb-md-0 mb-2"
+                        id='UserPlan'
+                        className='form-select text-capitalize mb-md-0 mb-2'
                       >
-                        <option value="Basic" className="text-capitalize">
+                        <option value='Basic' className='text-capitalize'>
                           الكل
                         </option>
-                        <option value="Basic" className="text-capitalize">
+                        <option value='Basic' className='text-capitalize'>
                           يومي
                         </option>
-                        <option value="Company" className="text-capitalize">
+                        <option value='Company' className='text-capitalize'>
                           اسبوعي
                         </option>
-                        <option value="Enterprise" className="text-capitalize">
+                        <option value='Enterprise' className='text-capitalize'>
                           شهري
                         </option>
                       </select>
@@ -124,14 +148,14 @@ function Users_Table() {
     </div> */}
                 </form>
               </div>
-              <hr class="my-0" />
-              <div className="table-responsive">
+              <hr class='my-0' />
+              <div className='table-responsive'>
                 <table
-                  className="table table-hover"
+                  className='table table-hover'
                   style={{
-                    textAlign: "center",
-                    borderCollapse: "separate",
-                    borderSpacing: "0 15px",
+                    textAlign: 'center',
+                    borderCollapse: 'separate',
+                    borderSpacing: '0 15px',
                   }}
                 >
                   <thead>
@@ -145,85 +169,35 @@ function Users_Table() {
                       <th>الهدف</th>
                       <th>السعرات المستهدفه</th>
                       <th>نوع الإشتراك</th>
+                      <th>تايخ انتهاء الإشتراك</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>
-                        <span className="fw-bold">نور العالم </span>
-                      </td>
-                      <td>0929207542</td>
-                      <td>انثى</td>
-                      <td>
-                        24
-                      </td>
-                      <td>23.5</td>
-                      <td>تثبيت وزن</td>
-                      <td>1850</td>
-                      <td>شهري</td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>
-                        <span className="fw-bold">نور العالم </span>
-                      </td>
-                      <td>0929207542</td>
-                      <td>انثى</td>
-                      <td>
-                        24
-                      </td>
-                      <td>23.5</td>
-                      <td>تثبيت وزن</td>
-                      <td>1850</td>
-                      <td>شهري</td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>
-                        <span className="fw-bold">نور العالم </span>
-                      </td>
-                      <td>0929207542</td>
-                      <td>انثى</td>
-                      <td>
-                        24
-                      </td>
-                      <td>23.5</td>
-                      <td>تثبيت وزن</td>
-                      <td>1850</td>
-                      <td>شهري</td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>
-                        <span className="fw-bold">نور العالم </span>
-                      </td>
-                      <td>0929207542</td>
-                      <td>انثى</td>
-                      <td>
-                        24
-                      </td>
-                      <td>23.5</td>
-                      <td>تثبيت وزن</td>
-                      <td>1850</td>
-                      <td>شهري</td>
-                    </tr>
-                    <tr>
-                      <td>5</td>
-                      <td>
-                        <span className="fw-bold">نور العالم </span>
-                      </td>
-                      <td>0929207542</td>
-                      <td>انثى</td>
-                      <td>
-                        24
-                      </td>
-                      <td>23.5</td>
-                      <td>تثبيت وزن</td>
-                      <td>1850</td>
-                      <td>شهري</td>
-                    </tr>
-                   
+                    {data.data.map((user, index) => (
+                      <tr>
+                        <td>{index}</td>
+                        <td>
+                          <span className='fw-bold'>{user?.name}</span>
+                        </td>
+                        <td>{user?.phone}</td>
+                        <td>{user?.gender}</td>
+                        <td>{user?.age}</td>
+                        <td>{user?.bmi}</td>
+                        <td>{user?.goal}</td>
+                        <td>{user?.bmr}</td>
+                        <td>
+                          {user?.subscriptions?.length < 1
+                            ? 'لا يوجد'
+                            : user?.subscriptions[0].subOtherPlatform ||
+                              user?.subscriptions[0].sub.name}
+                        </td>
+                        <td>
+                          {user?.subscriptions?.length < 1
+                            ? 'لا يوجد'
+                            : user?.subscriptions[0].endDate.split('T')[0]}
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>

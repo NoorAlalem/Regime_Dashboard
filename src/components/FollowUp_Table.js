@@ -1,7 +1,31 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useQuery } from 'react-query';
 
 function FollowUp_Table() {
+  const [page, setPage] = useState(1);
+  const fetchUser = async ({ queryKey }) => {
+    const response = await fetch(
+      `https://mealsandingrdents-server-production.up.railway.app/dashboard/user`
+    );
+    const data = await response.json();
+    return data;
+  };
+  const { data, status, isPreviousData } = useQuery(
+    ['users', page],
+    fetchUser,
+    {
+      keepPreviousData: true,
+    }
+  );
+
+  if (status === 'loading') {
+    return <div>Loading...</div>;
+  }
+
+  if (status === 'error') {
+    return <div>Error fetching data</div>;
+  }
   return (
     <div className='app-content content '>
       <div className='content-overlay' />
@@ -148,36 +172,42 @@ function FollowUp_Table() {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>1</td>
-                      <td>
-                        {/* <img
+                    {data.data.map((user, index) => (
+                      <tr>
+                        <td>{index}</td>
+                        <td>
+                          {/* <img
                           src="../../../app-assets/images/icons/user1.png"
                           className="me-75"
                           height={20}
                           width={20}
                           alt="Angular"
                         /> */}
-                        <span className='fw-bold'>نور العالم </span>
-                      </td>
-                      <td>0929207542</td>
-                      <td>
-                        <span className='badge rounded-pill badge-light-secondary me-1'>
-                          {' '}
-                          لم تتم المتابعة بعد
-                        </span>
-                      </td>
-                      <td>شهري</td>
-                      <td>
-                        <Link
-                          to='/Profile_Timeline'
-                          type='button'
-                          className='btn btn-primary btn-sm'
-                        >
-                          متابعة
-                        </Link>
+                          <span className='fw-bold'>{user?.name} </span>
+                        </td>
+                        <td>{user?.phone}</td>
+                        <td>
+                          <span className='badge rounded-pill badge-light-secondary me-1'>
+                            {' '}
+                            لم تتم المتابعة بعد
+                          </span>
+                        </td>
+                        <td>
+                          {user?.subscriptions?.length < 1
+                            ? 'لا يوجد'
+                            : user?.subscriptions[0].subOtherPlatform ||
+                              user?.subscriptions[0].sub.name}
+                        </td>
+                        <td>
+                          <Link
+                            to={`/user-timeline/${user?._id}`}
+                            type='button'
+                            className='btn btn-primary btn-sm'
+                          >
+                            متابعة
+                          </Link>
 
-                        {/* <UncontrolledDropdown>
+                          {/* <UncontrolledDropdown>
                                   <DropdownToggle
                                     caret
                                     tag="span"
@@ -209,77 +239,9 @@ function FollowUp_Table() {
                                     </DropdownItem>
                                   </DropdownMenu>
                                 </UncontrolledDropdown> */}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>2</td>
-                      <td>
-                        <span className='fw-bold'>نور العالم </span>
-                      </td>
-                      <td>0929207542</td>
-                      <td>
-                        <span className='badge rounded-pill badge-light-success me-1'>
-                          {' '}
-                          تمت المتابعة
-                        </span>
-                      </td>
-                      <td>شهري</td>
-                      <td>
-                        <Link
-                          to='/Profile_Timeline'
-                          type='button'
-                          className='btn btn-primary btn-sm'
-                        >
-                          متابعة
-                        </Link>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>3</td>
-                      <td>
-                        <span className='fw-bold'>نور العالم </span>
-                      </td>
-                      <td>0929207542</td>
-                      <td>
-                        <span className='badge rounded-pill badge-light-danger me-1'>
-                          {' '}
-                          لم يتم الرد
-                        </span>
-                      </td>
-                      <td>شهري</td>
-                      <td>
-                        <Link
-                          to='/Profile_Timeline'
-                          type='button'
-                          className='btn btn-primary btn-sm'
-                        >
-                          متابعة
-                        </Link>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>4</td>
-                      <td>
-                        <span className='fw-bold'>نور العالم </span>
-                      </td>
-                      <td>0929207542</td>
-                      <td>
-                        <span className='badge rounded-pill badge-light-danger me-1'>
-                          {' '}
-                          لم يتم الرد
-                        </span>
-                      </td>
-                      <td>شهري</td>
-                      <td>
-                        <Link
-                          to='/Profile_Timeline'
-                          type='button'
-                          className='btn btn-primary btn-sm'
-                        >
-                          متابعة
-                        </Link>
-                      </td>
-                    </tr>
+                        </td>
+                      </tr>
+                    ))}
                   </tbody>
                 </table>
               </div>

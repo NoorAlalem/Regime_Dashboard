@@ -53,18 +53,15 @@ function App() {
                 element={<Profile_Edit_Info />}
               />
               <Route
-                path='/Profile_Complaints'
-                exact
+                path='/user-complaints/:userId'
                 element={<Profile_Complaints />}
               />
               <Route
-                path='/Profile_Timeline'
-                exact
+                path='/user-timeline/:userId'
                 element={<Profile_Timeline />}
               />
               <Route
-                path='/Profile_Subscription'
-                exact
+                path='/user-subscription/:userId'
                 element={<Profile_Subscription />}
               />
               <Route path='/Meals' exact element={<Meals />} />
