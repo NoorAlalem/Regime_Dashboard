@@ -1,30 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import FeatherIcon from 'feather-icons-react';
 import { useQuery } from 'react-query';
 import formatSub from '../utils/sub';
+import { useDebounce } from 'use-debounce';
 
 function Users_Table() {
   const [page, setPage] = useState(1);
+  const [filter, setFilter] = useState('0916304597');
+  const debouncedFilter = useDebounce(filter, 1000);
+
   const fetchUser = async ({ queryKey }) => {
     const response = await fetch(
-      `https://mealsandingrdents-server-production.up.railway.app/dashboard/user`
+      `https://mealsandingrdents-server-production.up.railway.app/dashboard/user/phone/${queryKey[1]}`
     );
     const data = await response.json();
-    return data;
+    if (data?.success === true) {
+      return [data?.data];
+    } else {
+      return [];
+    }
   };
-  const { data, status, isPreviousData } = useQuery(
-    ['users', page],
+  const { data, status, isPreviousData, isError, isSuccess } = useQuery(
+    ['users', debouncedFilter[0]],
     fetchUser,
     {
       keepPreviousData: true,
     }
   );
+  useEffect(() => {
+    console.log(status, 'status');
+    console.log(isError, 'isError');
+  }, [status, isError]);
 
   if (status === 'loading') {
     return <div>Loading...</div>;
   }
 
   if (status === 'error') {
+    console.log(isError, 'error');
+
     return <div>Error fetching data</div>;
   }
   return (
@@ -87,6 +101,7 @@ function Users_Table() {
                           placeholder='البحث عن معلومات الزبائن...'
                           aria-label='Search...'
                           aria-describedby='basic-addon-search1'
+                          onChange={(e) => setFilter(e.target.value)}
                         />
                       </div>
                     </div>
@@ -174,32 +189,38 @@ function Users_Table() {
                     </tr>
                   </thead>
                   <tbody>
-                    {data.data.map((user, index) => (
+                    {data.length > 0 ? (
+                      data?.map((user, index) => (
+                        <tr>
+                          <td>{index}</td>
+                          <td>
+                            <span className='fw-bold'>{user?.name}</span>
+                          </td>
+                          <td>{user?.phone}</td>
+                          <td>{user?.gender}</td>
+                          <td>{user?.age}</td>
+                          <td>{user?.bmi}</td>
+                          <td>{user?.goal}</td>
+                          <td>{user?.bmr}</td>
+                          <td>
+                            {user?.subscriptions?.length < 1
+                              ? 'لا يوجد'
+                              : formatSub(
+                                  user?.subscriptions[0].subOtherPlatform
+                                ) || formatSub(user?.subscriptions[0].sub.name)}
+                          </td>
+                          <td>
+                            {user?.subscriptions?.length < 1
+                              ? 'لا يوجد'
+                              : user?.subscriptions[0].endDate.split('T')[0]}
+                          </td>
+                        </tr>
+                      ))
+                    ) : (
                       <tr>
-                        <td>{index}</td>
-                        <td>
-                          <span className='fw-bold'>{user?.name}</span>
-                        </td>
-                        <td>{user?.phone}</td>
-                        <td>{user?.gender}</td>
-                        <td>{user?.age}</td>
-                        <td>{user?.bmi}</td>
-                        <td>{user?.goal}</td>
-                        <td>{user?.bmr}</td>
-                        <td>
-                          {user?.subscriptions?.length < 1
-                            ? 'لا يوجد'
-                            : formatSub(
-                                user?.subscriptions[0].subOtherPlatform
-                              ) || formatSub(user?.subscriptions[0].sub.name)}
-                        </td>
-                        <td>
-                          {user?.subscriptions?.length < 1
-                            ? 'لا يوجد'
-                            : user?.subscriptions[0].endDate.split('T')[0]}
-                        </td>
+                        <td colSpan='10'>لا يوجد بيانات</td>
                       </tr>
-                    ))}
+                    )}
                   </tbody>
                 </table>
               </div>
