@@ -13,11 +13,17 @@ import Profile_Edit_Info from './Profile_Edit_Info';
 import Profile_Info_Details from './Profile_Info_Details';
 import { useQuery } from 'react-query';
 import toast, { Toaster } from 'react-hot-toast';
+import { useAuth } from '../store/login-context';
 
 function Profile_Complaints_Details({ user, userId }) {
+  const { token } = useAuth();
+
   const fetchUserComplaints = async ({ queryKey }) => {
     const response = await fetch(
-      `https://mealsandingrdents-server-production.up.railway.app/dashboard/support/user/${userId}`
+      `https://mealsandingrdents-server-production.up.railway.app/dashboard/support/user/${userId}`,
+      {
+        headers: { authorization: `Bearer ${token}` },
+      }
     );
     const data = await response.json();
     console.log(data.data);

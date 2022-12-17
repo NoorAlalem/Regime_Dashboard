@@ -9,9 +9,11 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import toast, { Toaster } from 'react-hot-toast';
+import { useAuth } from '../store/login-context';
 
 function Edit_Meal() {
   const [formFields, setFormFields] = useState([{ name: '', quantity: '' }]);
+  const { token } = useAuth();
 
   const handleChange = (event, index) => {
     // console.log(index, event.target.name)
@@ -66,7 +68,10 @@ function Edit_Meal() {
   const { mealId } = useParams();
   const fetchMeal = async ({ queryKey }) => {
     const response = await fetch(
-      `https://mealsandingrdents-server-production.up.railway.app/dashboard/meal/${mealId}`
+      `https://mealsandingrdents-server-production.up.railway.app/dashboard/meal/${mealId}`,
+      {
+        headers: { authorization: `Bearer ${token}` },
+      }
     );
     const data = await response.json();
     console.log(data.data);

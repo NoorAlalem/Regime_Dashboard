@@ -1,13 +1,19 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
+import { useAuth } from '../store/login-context';
+import toast, { Toaster } from 'react-hot-toast';
 
 function Complaints_Table() {
   const [page, setPage] = useState(1);
 
+  const { token } = useAuth();
   const fetchSupport = async ({ queryKey }) => {
     const response = await fetch(
-      `https://mealsandingrdents-server-production.up.railway.app/dashboard/support`
+      `https://mealsandingrdents-server-production.up.railway.app/dashboard/support`,
+      {
+        headers: { authorization: `Bearer ${token}` },
+      }
     );
     const data = await response.json();
     return data;
@@ -21,6 +27,7 @@ function Complaints_Table() {
   );
 
   if (status === 'loading') {
+    // toast.loading('جاري تحميل البيانات...');
     return <div>Loading...</div>;
   }
 
@@ -31,6 +38,7 @@ function Complaints_Table() {
     <div className='app-content content '>
       <div className='content-overlay' />
       <div className='header-navbar-shadow' />
+      <Toaster />
 
       <div className='content-wrapper container-xxl p-0'>
         <div className='content-header row'>

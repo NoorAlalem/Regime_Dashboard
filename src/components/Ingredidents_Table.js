@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
+import { useAuth } from '../store/login-context';
 
 function Ingredidents_Table() {
   const [page, setPage] = useState(1);
+  const { token } = useAuth();
 
   const fetchIngredidents = async ({ queryKey }) => {
     const response = await fetch(
-      `https://mealsandingrdents-server-production.up.railway.app/dashboard/ingredient`
+      `https://mealsandingrdents-server-production.up.railway.app/dashboard/ingredient`,
+      {
+        headers: { authorization: `Bearer ${token}` },
+      }
     );
     const data = await response.json();
     return data;

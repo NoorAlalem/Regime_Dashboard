@@ -8,8 +8,10 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import toast, { Toaster } from 'react-hot-toast';
+import { useAuth } from '../store/login-context';
 
 function Edit_Ingredident() {
+  const { token } = useAuth();
   const schema = yup.object().shape({
     ingredientName: yup.string().required('Ingredient Name is required'),
     quantity: yup.number().required('Quantity is required'),
@@ -34,7 +36,10 @@ function Edit_Ingredident() {
   const { ingredidentId } = useParams();
   const fetchIngredident = async ({ queryKey }) => {
     const response = await fetch(
-      `https://mealsandingrdents-server-production.up.railway.app/dashboard/ingredient/${ingredidentId}`
+      `https://mealsandingrdents-server-production.up.railway.app/dashboard/ingredient/${ingredidentId}`,
+      {
+        headers: { authorization: `Bearer ${token}` },
+      }
     );
     const data = await response.json();
     console.log(data.data);

@@ -3,15 +3,22 @@ import FeatherIcon from 'feather-icons-react';
 import { useQuery } from 'react-query';
 import formatSub from '../utils/sub';
 import { useDebounce } from 'use-debounce';
+import { useAuth } from '../store/login-context';
+import toast, { Toaster } from 'react-hot-toast';
 
 function Users_Table() {
+  const { token } = useAuth();
+
   const [page, setPage] = useState(1);
   const [filter, setFilter] = useState('0916304597');
   const debouncedFilter = useDebounce(filter, 1000);
 
   const fetchUser = async ({ queryKey }) => {
     const response = await fetch(
-      `https://mealsandingrdents-server-production.up.railway.app/dashboard/user/phone/${queryKey[1]}`
+      `https://mealsandingrdents-server-production.up.railway.app/dashboard/user/phone/${queryKey[1]}`,
+      {
+        headers: { authorization: `Bearer ${token}` },
+      }
     );
     const data = await response.json();
     if (data?.success === true) {
@@ -33,6 +40,7 @@ function Users_Table() {
   }, [status, isError]);
 
   if (status === 'loading') {
+    // toast.loading('جاري تحميل البيانات...');
     return <div>Loading...</div>;
   }
 
@@ -45,7 +53,7 @@ function Users_Table() {
     <div className='app-content content '>
       <div className='content-overlay' />
       <div className='header-navbar-shadow' />
-
+      <Toaster />
       <div className='content-wrapper container-xxl p-0'>
         <div className='content-header row'>
           <div className='content-header-left col-md-9 col-12 mb-2'>

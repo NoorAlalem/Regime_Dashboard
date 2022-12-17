@@ -2,15 +2,27 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import formatSub from '../utils/sub';
+import { useAuth } from '../store/login-context';
+import toast, { Toaster } from 'react-hot-toast';
 
 function FollowUp_Table() {
+  const { token } = useAuth();
+
   const [page, setPage] = useState(1);
   const fetchUser = async ({ queryKey }) => {
+    console.log(token, 'token');
     const response = await fetch(
-      `https://mealsandingrdents-server-production.up.railway.app/dashboard/user`
+      `https://mealsandingrdents-server-production.up.railway.app/dashboard/user`,
+      {
+        headers: { authorization: `Bearer ${token}` },
+      }
     );
     const data = await response.json();
-    return data;
+    if (data?.success === true) {
+      return data?.data;
+    } else {
+      return [];
+    }
   };
   const { data, status, isPreviousData } = useQuery(
     ['users', page],
@@ -21,6 +33,7 @@ function FollowUp_Table() {
   );
 
   if (status === 'loading') {
+    // toast.loading('جاري تحميل البيانات...');
     return <div>Loading...</div>;
   }
 
@@ -32,6 +45,7 @@ function FollowUp_Table() {
     <div className='app-content content '>
       <div className='content-overlay' />
       <div className='header-navbar-shadow' />
+      <Toaster />
 
       <div className='content-wrapper container-xxl p-0'>
         <div className='content-header row'>
@@ -174,7 +188,7 @@ function FollowUp_Table() {
                     </tr>
                   </thead>
                   <tbody>
-                    {data.data.map((user, index) => (
+                    {data?.map((user, index) => (
                       <tr>
                         <td>{index}</td>
                         <td>
@@ -198,8 +212,8 @@ function FollowUp_Table() {
                           {user?.subscriptions?.length < 1
                             ? 'لا يوجد'
                             : formatSub(
-                                user?.subscriptions[0].subOtherPlatform
-                              ) || formatSub(user?.subscriptions[0].sub.name)}
+                                user?.subscriptions[0]?.subOtherPlatform
+                              ) || formatSub(user?.subscriptions[0]?.sub?.name)}
                         </td>
                         <td>
                           <Link
