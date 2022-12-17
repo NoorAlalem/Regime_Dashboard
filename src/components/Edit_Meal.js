@@ -242,6 +242,7 @@ function Edit_Meal() {
       <div className='app-content content '>
         <div className='content-overlay' />
         <div className='header-navbar-shadow' />
+        <Toaster />
 
         <div className='content-wrapper container-xxl p-0'>
           <div className='content-header row'>
