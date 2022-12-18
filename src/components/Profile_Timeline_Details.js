@@ -173,7 +173,7 @@ function Profile_Timeline_Details({ user, userId }) {
               tabIndex={-1}
               aria-hidden='true'
             >
-              <Profile_Edit_Info />
+              <Profile_Edit_Info user={user} />
             </div>
 
             {/*/ Edit User Modal */}

@@ -12,15 +12,16 @@ import toast, { Toaster } from 'react-hot-toast';
 import { useAuth } from '../store/login-context';
 
 function Edit_Meal() {
-  const [formFields, setFormFields] = useState([{ name: '', quantity: '' }]);
+  const [formFields, setFormFields] = useState([
+    { label: '', quantity: '', unitOfMeasure: '' },
+  ]);
   const { token } = useAuth();
 
   const handleChange = (event, index) => {
     // console.log(index, event.target.name)
-
-    let data = [...formFields];
-    data[index][event.target.name] = event.target.value;
-    setFormFields(data);
+    // let data = [...formFields];
+    // data[index][event.target.name] = event.target.value;
+    // setFormFields(data);
   };
   const schema = yup.object().shape({
     name: yup.string().required('Meal Name is required'),
@@ -47,6 +48,27 @@ function Edit_Meal() {
     grain: yup.boolean().required(),
     shellfish: yup.boolean().required(),
     wheat: yup.boolean().required(),
+    ////////////////////////////////////////////////////////////////////////////////
+    glutenFree: yup.boolean().required(),
+    ketogenic: yup.boolean().required(),
+    vegetarian: yup.boolean().required(),
+    lactoVegetarian: yup.boolean().required(),
+    ovoVegetarian: yup.boolean().required(),
+    vegan: yup.boolean().required(),
+    pescetarian: yup.boolean().required(),
+    paleo: yup.boolean().required(),
+    primal: yup.boolean().required(),
+    lowFODMAP: yup.boolean().required(),
+    whole30: yup.boolean().required(),
+    ////////////////////////////////////////////////////////////////////////////////
+    ingredients: yup.array().of(
+      yup.object().shape({
+        label: yup.string().required(),
+        value: yup.string().required(),
+        quantity: yup.string().required(),
+        unitOfMeasure: yup.string().required(),
+      })
+    ),
   });
 
   const {
@@ -75,6 +97,9 @@ function Edit_Meal() {
     );
     const data = await response.json();
     console.log(data.data);
+
+    setFormFields(data?.data?.ingredients);
+    console.log(data?.data?.ingredients);
     return data.data;
   };
 
@@ -115,6 +140,20 @@ function Edit_Meal() {
     setValue('grain', data?.grain);
     setValue('shellfish', data?.shellfish);
     setValue('wheat', data?.wheat);
+    ////////////////////////////////////////////////////////////////////////////////
+    setValue('glutenFree', data?.glutenFree);
+    setValue('ketogenic', data?.ketogenic);
+    setValue('vegetarian', data?.vegetarian);
+    setValue('lactoVegetarian', data?.lactoVegetarian);
+    setValue('ovoVegetarian', data?.ovoVegetarian);
+    setValue('vegan', data?.vegan);
+    setValue('pescetarian', data?.pescetarian);
+    setValue('paleo', data?.paleo);
+    setValue('primal', data?.primal);
+    setValue('lowFODMAP', data?.lowFODMAP);
+    setValue('whole30', data?.whole30);
+    ////////////////////////////////////////////////////////////////////////////////
+    setValue('ingredients', data?.ingredients);
   }
 
   const onSubmit = (data, e) => {
@@ -510,13 +549,160 @@ function Edit_Meal() {
                       </div>
                     </div>
                     <div className='row g-1 mb-md-4'>
-                      <div className='col-md-3 user_status'>
-                        <label className='form-label'>
-                          {' '}
-                          <b> الحمية </b>
-                        </label>
-
-                        <Select options={diet} name='' isMulti />
+                      <h2 className='text-primary'>الحمية</h2>
+                      <div className='col-md-1 user_status'>
+                        <div class='form-check'>
+                          <input
+                            id='glutenFree'
+                            name='glutenFree'
+                            {...register('glutenFree')}
+                            type='checkbox'
+                            class='form-check-input'
+                          />
+                          <label class='form-check-label' for='glutenFree'>
+                            Gluten Free
+                          </label>
+                        </div>
+                      </div>
+                      <div className='col-md-1 user_status'>
+                        <div class='form-check'>
+                          <input
+                            id='ketogenic'
+                            name='ketogenic'
+                            {...register('ketogenic')}
+                            type='checkbox'
+                            class='form-check-input'
+                          />
+                          <label class='form-check-label' for='ketogenic'>
+                            Ketogenic
+                          </label>
+                        </div>
+                      </div>
+                      <div className='col-md-1 user_status'>
+                        <div class='form-check'>
+                          <input
+                            id='vegetarian'
+                            name='vegetarian'
+                            {...register('vegetarian')}
+                            type='checkbox'
+                            class='form-check-input'
+                          />
+                          <label class='form-check-label' for='vegetarian'>
+                            Vegetarian
+                          </label>
+                        </div>
+                      </div>
+                      <div className='col-md-1 user_status'>
+                        <div class='form-check'>
+                          <input
+                            id='lactoVegetarian'
+                            name='lactoVegetarian'
+                            {...register('lactoVegetarian')}
+                            type='checkbox'
+                            class='form-check-input'
+                          />
+                          <label class='form-check-label' for='lactoVegetarian'>
+                            Lacto Vegetarian
+                          </label>
+                        </div>
+                      </div>
+                      <div className='col-md-1 user_status'>
+                        <div class='form-check'>
+                          <input
+                            id='ovoVegetarian'
+                            name='ovoVegetarian'
+                            {...register('ovoVegetarian')}
+                            type='checkbox'
+                            class='form-check-input'
+                          />
+                          <label class='form-check-label' for='ovoVegetarian'>
+                            Ovo Vegetarian
+                          </label>
+                        </div>
+                      </div>
+                      <div className='col-md-1 user_status'>
+                        <div class='form-check'>
+                          <input
+                            id='vegan'
+                            name='vegan'
+                            {...register('vegan')}
+                            type='checkbox'
+                            class='form-check-input'
+                          />
+                          <label class='form-check-label' for='vegan'>
+                            Vegan
+                          </label>
+                        </div>
+                      </div>
+                      <div className='col-md-1 user_status'>
+                        <div class='form-check'>
+                          <input
+                            id='pescetarian'
+                            name='pescetarian'
+                            {...register('pescetarian')}
+                            type='checkbox'
+                            class='form-check-input'
+                          />
+                          <label class='form-check-label' for='pescetarian'>
+                            Pescetarian
+                          </label>
+                        </div>
+                      </div>
+                      <div className='col-md-1 user_status'>
+                        <div class='form-check'>
+                          <input
+                            id='paleo'
+                            name='paleo'
+                            {...register('paleo')}
+                            type='checkbox'
+                            class='form-check-input'
+                          />
+                          <label class='form-check-label' for='paleo'>
+                            Paleo
+                          </label>
+                        </div>
+                      </div>
+                      <div className='col-md-1 user_status'>
+                        <div class='form-check'>
+                          <input
+                            id='primal'
+                            name='primal'
+                            {...register('primal')}
+                            type='checkbox'
+                            class='form-check-input'
+                          />
+                          <label class='form-check-label' for='primal'>
+                            Primal
+                          </label>
+                        </div>
+                      </div>
+                      <div className='col-md-1 user_status'>
+                        <div class='form-check'>
+                          <input
+                            id='lowFODMAP'
+                            name='lowFODMAP'
+                            {...register('lowFODMAP')}
+                            type='checkbox'
+                            class='form-check-input'
+                          />
+                          <label class='form-check-label' for='lowFODMAP'>
+                            lowFODMAP
+                          </label>
+                        </div>
+                      </div>
+                      <div className='col-md-1 user_status '>
+                        <div class='form-check '>
+                          <input
+                            id='whole30'
+                            name='whole30'
+                            {...register('whole30')}
+                            type='checkbox'
+                            class='form-check-input '
+                          />
+                          <label class='form-check-label' for='whole30'>
+                            Whole 30
+                          </label>
+                        </div>
                       </div>
                     </div>
                     <div className='row g-1 mb-md-4'>
@@ -605,8 +791,9 @@ function Edit_Meal() {
                                         onChange={(event) =>
                                           handleChange(event, index)
                                         }
-                                        value={form.name}
+                                        value={form.value}
                                         options={Ingredient}
+                                        defaultValue={form.label}
                                         name='name'
                                       />
                                     </div>
@@ -620,6 +807,7 @@ function Edit_Meal() {
                                       <input
                                         readOnly
                                         className='form-control ms-50'
+                                        value={form.unitOfMeasure}
                                       />
                                     </div>
                                     <div className='col-md-3 mb-1'>
