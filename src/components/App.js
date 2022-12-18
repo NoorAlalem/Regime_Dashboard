@@ -17,7 +17,12 @@ import Profile_Info_Details from './Profile_Info_Details';
 import Sidebar from './Sidebar';
 import Modal from 'react-modal';
 import Calendar from '../pages/Calendar';
+import Login from '../pages/Login';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import '../App.css';
+import { AuthProvider } from '../store/login-context';
+import Protected from './Protected';
+
 const queryClient = new QueryClient();
 
 Modal.setAppElement('#root');
@@ -31,50 +36,90 @@ function App() {
       data-col=''
     >
       <div className='App'>
-        <QueryClientProvider client={queryClient}>
-          <Router>
-            <Routes>
-              <Route path='/' exact element={<Users />} />
-              <Route path='/FollowUp' exact element={<FollowUp />} />
-              <Route path='/Complaints' exact element={<Complaints />} />
-              <Route
-                path='/Profile_Complaints_Details'
-                exact
-                element={<Profile_Complaints_Details />}
-              />
-              <Route
-                path='/Profile_Info_Details'
-                exact
-                element={<Profile_Info_Details />}
-              />
-              <Route
-                path='/Profile_Edit_Info'
-                exact
-                element={<Profile_Edit_Info />}
-              />
-              <Route
-                path='/user-complaints/:userId'
-                element={<Profile_Complaints />}
-              />
-              <Route
-                path='/user-timeline/:userId'
-                element={<Profile_Timeline />}
-              />
-              <Route
-                path='/user-subscription/:userId'
-                element={<Profile_Subscription />}
-              />
-              <Route path='/Meals' exact element={<Meals />} />
-              <Route path='/Ingredients' exact element={<Ingredients />} />
-              <Route path='/Calendar' exact element={<Calendar />} />
-              <Route
-                path='/ingredident/:ingredidentId'
-                element={<Edit_Ingredident />}
-              />
-              <Route path='/meal/:mealId' element={<Edit_Meal />} />
-            </Routes>
-          </Router>
-        </QueryClientProvider>
+        <AuthProvider>
+          <QueryClientProvider client={queryClient}>
+            <Router>
+              <Routes>
+                <Route path='/login' exact element={<Login />} />
+                <Route path='/' element={<Protected />}>
+                  <Route path='/' exact element={<Users />} />
+                </Route>
+                <Route path='/FollowUp' element={<Protected />}>
+                  <Route path='/FollowUp' exact element={<FollowUp />} />
+                </Route>
+                <Route path='/Complaints' element={<Protected />}>
+                  <Route path='/Complaints' exact element={<Complaints />} />
+                </Route>
+                <Route
+                  path='/Profile_Complaints_Details'
+                  element={<Protected />}
+                >
+                  <Route
+                    path='/Profile_Complaints_Details'
+                    exact
+                    element={<Profile_Complaints_Details />}
+                  />
+                </Route>
+                <Route path='/Profile_Info_Details' element={<Protected />}>
+                  <Route
+                    path='/Profile_Info_Details'
+                    exact
+                    element={<Profile_Info_Details />}
+                  />
+                </Route>
+                <Route path='/Profile_Edit_Info' element={<Protected />}>
+                  <Route
+                    path='/Profile_Edit_Info'
+                    exact
+                    element={<Profile_Edit_Info />}
+                  />
+                </Route>
+                <Route path='/user-complaints/:userId' element={<Protected />}>
+                  <Route
+                    path='/user-complaints/:userId'
+                    element={<Profile_Complaints />}
+                  />
+                </Route>
+                <Route path='/user-timeline/:userId' element={<Protected />}>
+                  <Route
+                    path='/user-timeline/:userId'
+                    element={<Profile_Timeline />}
+                  />
+                </Route>
+                <Route
+                  path='/user-subscription/:userId'
+                  element={<Protected />}
+                >
+                  <Route
+                    path='/user-subscription/:userId'
+                    element={<Profile_Subscription />}
+                  />
+                </Route>
+                <Route path='/Meals' element={<Protected />}>
+                  <Route path='/Meals' exact element={<Meals />} />
+                </Route>
+                <Route path='/Ingredients' element={<Protected />}>
+                  <Route path='/Ingredients' exact element={<Ingredients />} />
+                </Route>
+                <Route path='/Calendar' element={<Protected />}>
+                  <Route path='/Calendar' exact element={<Calendar />} />
+                </Route>
+                <Route
+                  path='/ingredident/:ingredidentId'
+                  element={<Protected />}
+                >
+                  <Route
+                    path='/ingredident/:ingredidentId'
+                    element={<Edit_Ingredident />}
+                  />
+                </Route>
+                <Route path='/meal/:mealId' element={<Protected />}>
+                  <Route path='/meal/:mealId' element={<Edit_Meal />} />
+                </Route>
+              </Routes>
+            </Router>
+          </QueryClientProvider>
+        </AuthProvider>
 
         <div class='sidenav-overlay'></div>
         <div class='drag-target'></div>
