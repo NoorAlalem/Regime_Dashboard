@@ -103,9 +103,35 @@ function Edit_Meal() {
     return data.data;
   };
 
+  const fetchIngredient = async () => {
+    try {
+      const response = await fetch(
+        `https://mealsandingrdents-server-production.up.railway.app/ingredient/fetch`,
+        {
+          headers: { authorization: `Bearer ${token}` },
+        }
+      );
+      const data = await response.json();
+      console.log(data.data);
+
+      // setFormFields(data?.data?.ingredients);
+      // console.log(data?.data?.ingredients);
+      return data.data;
+    } catch (error) {
+      toast.error('Error fetching ingredients');
+    }
+  };
   const { data, status, isPreviousData } = useQuery('meal', fetchMeal, {
     keepPreviousData: true,
   });
+
+  const { data: ingredientData, status: ingredientStatus } = useQuery(
+    'ingredient',
+    fetchIngredient,
+    {
+      keepPreviousData: true,
+    }
+  );
 
   if (status === 'loading') {
     return <div>Loading...</div>;

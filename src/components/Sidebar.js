@@ -85,7 +85,6 @@ function Sidebar() {
               className='d-flex align-items-center'
             >
               <div>
-                {' '}
                 <RestaurantIcon />
               </div>
               <span className='menu-item text-truncate'>اضافة مكوّن</span>
