@@ -41,6 +41,7 @@ function Edit_Ingredident() {
         headers: { authorization: `Bearer ${token}` },
       }
     );
+
     const data = await response.json();
     console.log(data.data);
     return data.data;
@@ -104,6 +105,7 @@ function Edit_Ingredident() {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
+          authorization: `Bearer ${token}`,
         },
         body: JSON.stringify(data),
       }
